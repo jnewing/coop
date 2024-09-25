@@ -7,10 +7,11 @@
 </head>
 <body>
     <h1>Basic Form</h1>
-    <p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, 
-    just like this <strong>p</strong> tag and its contents.</p>
-
-    <form action="" method="post">
+    <?php
+    if(!isset($_POST['done'])){
+        ?>
+    
+        <form action="" method="post">
         <label><strong>Phone #:</strong></label>
         <input type="phone" name="usr_phone" />
         <br /><br />
@@ -26,8 +27,12 @@
         <button type="submit" name="done">Done</button>
     </form>
     <?php
+    }
+    ?>
+    
+    <?php
 if(isset($_POST['done'])){
-  $input = $_POST['usr_phone'] . $_POST['usr_email'] . $_POST['usr_message'];
+  $input = "{$_POST['usr_phone']}  {$_POST['usr_email']}  {$_POST['usr_message']}";
   $message = "Success! You entered: " . $input;
      print($message); 
 }
